@@ -1,3 +1,8 @@
+#set ntp server
+w32tm /config /manualpeerlist:pool.ntp.org /syncfromflags:MANUAL
+Stop-Service w32time
+Start-Service w32time
+
 New-Item -path "C:\" -Name Temp -ItemType directory
 cd C:\Temp
 
@@ -10,9 +15,6 @@ else {
     Write-Host ">> Download Complete"
 }
 
-& .\firefox-latest.exe
+& .\firefox-latest.exe /s
 
-#set ntp server
-w32tm /config /manualpeerlist:pool.ntp.org /syncfromflags:MANUAL
-Stop-Service w32time
-Start-Service w32time
+
