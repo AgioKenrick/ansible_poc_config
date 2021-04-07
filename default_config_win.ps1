@@ -1,6 +1,7 @@
 #set ntp server
 w32tm /config /manualpeerlist:pool.ntp.org /syncfromflags:MANUAL
-Stop-Service w32time
+Start-sleep -seconds 2
+Stop-Service w32time -force
 Start-Sleep -seconds 10
 Start-Service w32time
 
