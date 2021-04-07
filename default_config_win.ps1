@@ -1,9 +1,4 @@
-#set ntp server
-w32tm /config /manualpeerlist:pool.ntp.org /syncfromflags:MANUAL
-Start-sleep -seconds 2
-Stop-Service w32time -force
-Start-Sleep -seconds 10
-Start-Service w32time
+
 
 New-Item -path "C:\" -Name Temp -ItemType directory
 Start-sleep -seconds 5
@@ -23,3 +18,9 @@ Start-sleep -seconds 10
 & ".\firefox-latest.exe" $Param
 
 
+#set ntp server
+w32tm /config /manualpeerlist:pool.ntp.org /syncfromflags:MANUAL
+Start-sleep -seconds 2
+Stop-Service w32time -force
+Start-Sleep -seconds 10
+Start-Service w32time
