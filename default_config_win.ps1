@@ -19,8 +19,14 @@ Start-sleep -seconds 10
 
 
 #set ntp server
-w32tm /config /manualpeerlist:"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org" /syncfromflags:MANUAL
-Start-sleep -seconds 2
-Stop-Service w32time -force
-Start-Sleep -seconds 10
+net start w32time
+start-sleep -Seconds 10
+w32tm /config /manualpeerlist:time.nist.gov /syncfromflags:MANUAL
+Stop-Service w32time
+start-sleep -seconds 10
 Start-Service w32time
+start-sleep -seconds 10
+w32tm /resync
+start-sleep -seconds 10
+#set to auto start
+sc.exe config W32Time start= delayed-auto
