@@ -30,3 +30,5 @@ w32tm /resync
 start-sleep -seconds 10
 #set to auto start
 sc.exe config W32Time start= delayed-auto
+
+set-timezone "Eastern Standard Time"
