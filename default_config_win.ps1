@@ -1,6 +1,6 @@
 
 
-New-Item -path "C:\" -Name Temp -ItemType directory
+mkdir C:\Temp
 Start-sleep -seconds 5
 cd C:\Temp
 
